@@ -1,0 +1,20 @@
+{
+  "name": "위즈돔 TEST APP",
+  "author": {
+    "name": "JASON",
+    "email": "yjs_301@naver.com",
+    "url": ""
+  },
+  "defaultLocale": "en",
+  "private": true,
+  "location": {
+    "support": {
+      "ticket_sidebar": "assets/iframe.html"
+    },
+    "chat": {
+      "chat_sidebar": "assets/iframe.html"
+    }
+  },
+  "version": "1.0",
+  "frameworkVersion": "2.0"
+}
