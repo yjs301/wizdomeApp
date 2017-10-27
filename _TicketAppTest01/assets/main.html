@@ -1,0 +1,64 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- http://garden.zendesk.com -->
+  <link rel="stylesheet" href="https://assets.zendesk.com/apps/sdk-assets/css/1/zendesk_garden.css" type="text/css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+  <link rel="stylesheet" type="text/css" href="./main.css">
+  <script src='http://code.jquery.com/jquery-latest.js'></script>
+  <script type="text/javascript" src='./main.js'></script>
+</head>
+<body>
+
+  <div class="navBar w3-bar w3-black">
+    <button class="w3-bar-item w3-button tablink w3-white" onclick="openNavi(event, 'Dash')">Dash</button>
+    <button class="w3-bar-item w3-button tablink w3-black" onclick="openNavi(event, 'div_User')">User</button>
+    <button class="w3-bar-item w3-button tablink w3-black" onclick="openNavi(event, 'div_Bus')">Bus</button>
+  </div>
+
+  <div class=main>
+    <div id=div_User class="div_navi w3-container city w3-animate-opacity">
+        <h2 class="u-infoUser">사용자 정보</h2>
+        <div id=userInfoTable>
+          <table class="userInfoTable">
+            <tr><td>이름</td><td><p class="userName">userName</p></td></tr>
+            <tr><td>전화번호</td><td><p class="userPhone">userPhone</p></td></tr>
+            <tr><td>E-mail</td><td><p class="userEmail">userEmail</p></td></tr>
+          </table>
+        </div>
+    </div>
+
+    <div id=space></div>
+
+    <div id=div_Bus class="div_navi w3-container city w3-animate-opacity">
+        <h2 class="b-infoBus">버스 정보</h2>
+        <div id=div_E-bus>
+          <table class="userInfoTable">
+            <tr><td>탑승 날짜</td><td><p class="boardingDay">boardingDay</p></td></tr>
+            <tr><td>탑승 여부</td><td><p class="boardingYn">boardingYn</p></td></tr>
+            <tr><td>노선 이름</td><td><p class="lineName">lineName</p></td></tr>
+            <tr><td>노선 정의</td><td><p class="lineDesc">lineDesc</p></td></tr>
+            <tr><td>지불 금액</td><td><p class="payMoney">payMoney</p></td></tr>
+          </table>
+        </div>
+        <div class=E-busmap></div>
+    </div>
+
+    <div id=space></div>
+    
+  </div>
+
+  <script>
+   
+  </script>
+
+  <!-- https://github.com/zendesk/zendesk_app_framework_sdk -->
+  <script type="text/javascript" src="https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js"></script>
+  <script>
+    // Initialise the Zendesk JavaScript API client
+    // https://developer.zendesk.com/apps/docs/apps-v2
+    var client = ZAFClient.init();
+    client.invoke('resize', { width: '100%', height: '500px' });
+  </script>
+</body>
+</html>

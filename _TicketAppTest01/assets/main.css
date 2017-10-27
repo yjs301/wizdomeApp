@@ -1,0 +1,65 @@
+div{
+	width: 320px;
+}
+
+table{
+	text-align: center;
+}
+
+.navBar {
+	overflow: hidden;
+	background-color: #333;
+	position: fixed;
+	top: 0;
+	width: 320px;
+}
+
+.navBar a{
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 10px 13px;
+}
+
+.main {
+	margin-top: 38px;
+}
+
+#div_User {
+	text-align: center;
+	border: 1px solid black;
+}
+
+#div_User > div {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#picture {
+	border: 1px solid black;
+	width: 100px;
+	height: 100px;
+}
+
+#userInfo {
+	width: 200px;
+	height: 50px;
+}
+
+#userInfoTable{
+	width: 300px;
+}
+
+#space {
+	margin: 0 0 10px 0;
+}
+
+#div_Bus{
+	text-align: center;
+	border: 1px solid black;
+}
+
+.E-busmap{
+	margin: 0 -15px;
+}
