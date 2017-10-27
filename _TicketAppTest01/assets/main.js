@@ -15,7 +15,7 @@ $(document).ready(function(){
       "Access-Control-Allow-Origin" : "*"
     },
     error: function(error){
-      alert('유저 정보를 불러올 수 없습니다. ');
+      console.log('유저 정보를 불러올 수 없습니다. ');
       console.log(error);
     },
     success: function(json){
@@ -31,7 +31,7 @@ $(document).ready(function(){
       "Access-Control-Allow-Origin" : "*"
     },
     error: function(error){
-      alert('버스 정보를 불러올 수 없습니다. ');
+      console.log('버스 정보를 불러올 수 없습니다. ');
       console.log(error);
     },
     success: function(json){
@@ -81,8 +81,51 @@ function initMap(jsonData){
 
   var googleMapStr = "<iframe width='300' height='300' frameborder='0' style='border: 0;' src='https://www.google.com/maps/embed/v1/view?key=AIzaSyAvr4zHR2ixhVBJbL4Bg74Vz1zbPnCPq6s&center="+busLat+","+busLng+"&zoom=18&maptype=satellite' allowfullscreen></iframe>";
 
-  $('.E-busmap').html(googleMapStr);
+  $('#E-busmap').html(googleMapStr);
+
+  // var busTxt = jsonData.lineSeq + '번 버스'
+
+  // var coordinates = {
+  //     lat: jsonData.busLat,
+  //     lng: jsonData.busLng
+  // };
+
+  // var map = new google.maps.Map(document.getElementById('E-busmap'), {
+  //     zoom: 14,
+  //     center: coordinates,
+  //     scrollwheel: false
+  // });
+
+  // var measle = new google.maps.Marker({
+  //     position: coordinates,
+  //     map: map, 
+  //     icon: {
+  //       url: "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle.png",
+  //       size: new google.map.Size(7, 7),
+  //       anchor: new google.maps.Point(3.8, 3.8)
+  //     }
+  // });
+
+  // var marker = new google.maps.Marker({
+  //   position: coordinates,
+  //   map: map,
+  //   icon: {
+  //     url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+  //     labelOrigin: new google.maps.Point(75, 32),
+  //     size: new google.maps.Size(32, 32),
+  //     anchor: new google.maps.Point(16, 32)
+  //   },
+  //   label: {
+  //     text: busTxt,
+  //     color: "#C70E20",
+  //     fontWeight: "bold"
+  //   }
+  // });
+
 }
+
+// google.maps.event.addDomListener(window, "load", initMap);
+
 
 function openNavi(evt, Name) {
     var i, tablinks;

@@ -4,26 +4,32 @@
   <!-- http://garden.zendesk.com -->
   <link rel="stylesheet" href="https://assets.zendesk.com/apps/sdk-assets/css/1/zendesk_garden.css" type="text/css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./main.css">
   <script src='http://code.jquery.com/jquery-latest.js'></script>
+  <script src="https://maps.googleapis.com/maps/api/js"></script>
   <script type="text/javascript" src='./main.js'></script>
 </head>
 <body>
 
   <div class="navBar w3-bar w3-black">
-    <button class="w3-bar-item w3-button tablink w3-white" onclick="openNavi(event, 'Dash')">Dash</button>
-    <button class="w3-bar-item w3-button tablink w3-black" onclick="openNavi(event, 'div_User')">User</button>
-    <button class="w3-bar-item w3-button tablink w3-black" onclick="openNavi(event, 'div_Bus')">Bus</button>
+    <button class="w3-bar-item w3-button tablink w3-white" onclick="openNavi(event, 'Dash')"><i class="glyphicon glyphicon-home"></i></button>
+    <button class="w3-bar-item w3-button tablink w3-black" onclick="openNavi(event, 'div_User')"><i class="glyphicon glyphicon-user"></i></button>
+    <button class="w3-bar-item w3-button tablink w3-black" onclick="openNavi(event, 'div_Bus')"><i class="fa fa-bus"></i>
+</button>
   </div>
 
   <div class=main>
     <div id=div_User class="div_navi w3-container city w3-animate-opacity">
-        <h2 class="u-infoUser">사용자 정보</h2>
+        <div class="divHeader">
+            <h2 class="u-infoUser">사용자 정보</h2>
+        </div>
         <div id=userInfoTable>
-          <table class="userInfoTable">
-            <tr><td>이름</td><td><p class="userName">userName</p></td></tr>
-            <tr><td>전화번호</td><td><p class="userPhone">userPhone</p></td></tr>
-            <tr><td>E-mail</td><td><p class="userEmail">userEmail</p></td></tr>
+          <table class="wapperTable">
+            <tr><td><span title="사용자 이름"><p><i class="glyphicon glyphicon-user"></i></p></span></td><td><p class="userName">userName</p></td></tr>
+            <tr><td><span title="전화번호"><p><i class="glyphicon glyphicon-phone"></i></p></span></td><td><p class="userPhone">userPhone</p></td></tr>
+            <tr><td><span title="이메일 주소"><p><i class="fa fa-envelope" aria-hidden="true"></i></p></span></td><td><p class="userEmail">userEmail</p></td></tr>
           </table>
         </div>
     </div>
@@ -31,17 +37,17 @@
     <div id=space></div>
 
     <div id=div_Bus class="div_navi w3-container city w3-animate-opacity">
-        <h2 class="b-infoBus">버스 정보</h2>
-        <div id=div_E-bus>
-          <table class="userInfoTable">
-            <tr><td>탑승 날짜</td><td><p class="boardingDay">boardingDay</p></td></tr>
-            <tr><td>탑승 여부</td><td><p class="boardingYn">boardingYn</p></td></tr>
-            <tr><td>노선 이름</td><td><p class="lineName">lineName</p></td></tr>
-            <tr><td>노선 정의</td><td><p class="lineDesc">lineDesc</p></td></tr>
-            <tr><td>지불 금액</td><td><p class="payMoney">payMoney</p></td></tr>
-          </table>
+        <div class="divHeader">
+            <h2 class="b-infoBus">버스 정보</h2>
         </div>
-        <div class=E-busmap></div>
+          <table class="wapperTable">
+            <tr><td><p>탑승 날짜</p></td><td><p class="boardingDay">boardingDay</p></td></tr>
+            <tr><td><p>탑승 여부</p></td><td><p class="boardingYn">boardingYn</p></td></tr>
+            <tr><td><p>노선 이름</p></td><td><p class="lineName">lineName</p></td></tr>
+            <tr><td><p>노선 정의</p></td><td><p class="lineDesc">lineDesc</p></td></tr>
+            <tr><td><p>지불 금액</p></td><td><p class="payMoney">payMoney</p></td></tr>
+          </table>
+        <div id=E-busmap></div>
     </div>
 
     <div id=space></div>
