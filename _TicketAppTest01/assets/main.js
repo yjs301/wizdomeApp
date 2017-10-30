@@ -3,7 +3,8 @@ $.support.cors = true;
 
 $(document).ready(function(){
 
-  var server = 'http://192.168.0.15:8080';
+  var server = 'http://103.60.125.67:8080';
+  // var server = 'http://192.168.0.15:8080';
   var userID = '01099868601';
   var userAPIURL = server + '/api/user/' + userID;
   var busAPIURL = server + '/api/boarding/list?user_id=' + userID;
@@ -12,7 +13,7 @@ $(document).ready(function(){
     type: 'get',
     url: userAPIURL,
     headers : {
-      "Access-Control-Allow-Origin" : "*"
+      'Content-Type':'application/x-www-form-urlencoded'
     },
     error: function(error){
       console.log('유저 정보를 불러올 수 없습니다. ');
@@ -28,7 +29,7 @@ $(document).ready(function(){
     type: 'get',
     url: busAPIURL,
     headers : {
-      "Access-Control-Allow-Origin" : "*"
+      'Content-Type':'application/x-www-form-urlencoded'
     },
     error: function(error){
       console.log('버스 정보를 불러올 수 없습니다. ');
@@ -81,16 +82,23 @@ function initMap(jsonData){
 
   var googleMapStr = "<iframe width='300' height='300' frameborder='0' style='border: 0;' src='https://www.google.com/maps/embed/v1/view?key=AIzaSyAvr4zHR2ixhVBJbL4Bg74Vz1zbPnCPq6s&center="+busLat+","+busLng+"&zoom=18&maptype=satellite' allowfullscreen></iframe>";
 
-  $('#E-busmap').html(googleMapStr);
+  $('#map').html(googleMapStr);
 
-  // var busTxt = jsonData.lineSeq + '번 버스'
+  // // var busTxt = jsonData.lineSeq + '번 버스'
+
+  // // var coordinates = {
+  // //     lat: jsonData.busLat,
+  // //     lng: jsonData.busLng
+  // // };
+
+  // var busTxt =  '버스';
 
   // var coordinates = {
-  //     lat: jsonData.busLat,
-  //     lng: jsonData.busLng
+  //     lat: 40.785845,
+  //     lng: -74.020496
   // };
 
-  // var map = new google.maps.Map(document.getElementById('E-busmap'), {
+  // var map = new google.maps.Map(document.getElementById('map'), {
   //     zoom: 14,
   //     center: coordinates,
   //     scrollwheel: false
@@ -101,7 +109,7 @@ function initMap(jsonData){
   //     map: map, 
   //     icon: {
   //       url: "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle.png",
-  //       size: new google.map.Size(7, 7),
+  //       size: new google.maps.Size(7, 7),
   //       anchor: new google.maps.Point(3.8, 3.8)
   //     }
   // });
@@ -121,11 +129,9 @@ function initMap(jsonData){
   //     fontWeight: "bold"
   //   }
   // });
-
 }
 
 // google.maps.event.addDomListener(window, "load", initMap);
-
 
 function openNavi(evt, Name) {
     var i, tablinks;
@@ -137,7 +143,7 @@ function openNavi(evt, Name) {
 
     tablinks = document.getElementsByClassName("tablink");
 
-    for(i=0; i <= x.length; i++){
+    for(i=0; i < x.length; i++){
       tablinks[i].className = tablinks[i].className.replace(" w3-white", " w3-black");
     }
 
