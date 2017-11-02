@@ -92,6 +92,16 @@ img{
 	display: none;
 }
 
+#div_Bus .listBus{
+	text-align: center;
+	width: 10px;
+}
+
+.listBusDetails{
+	display: none;
+
+}
+
 #map{
 	margin: 0 -15px;
 	padding: 0px;

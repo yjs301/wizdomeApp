@@ -73,6 +73,8 @@ function initBus(jsonData){
 
   initMap(jsonData.data[latestDaySeq]);
 
+  $('.listBus').empty().html(listbusItems(jsonData.data));
+
 }
 
 function initMap(jsonData){
@@ -162,4 +164,37 @@ function openNavi(evt, Name) {
     //   // evt.currentTarget.className += " w3-white";
     // }
     
+}
+
+function listbusItems(jsonData){
+  var strHtml = new Array();
+
+  for(i = 0; i < jsonData.length; i++){
+
+    var boardingDay = jsonData[i].boardingDay.toString();
+    var boardingYn = jsonData[i].boardingYn.toString();
+    var lineName = jsonData[i].lineName.toString();
+    var lineDesc = jsonData[i].lineDesc.toString();
+    var payMoney = jsonData[i].payMoney.toString();
+
+    strHtml.push("<button class='w3-button tablink w3-yellow' style='text-align: center; display: block; border-radius: 5px;' onclick='listbusItemsClick("+i+")'> 탑승 날짜: " + jsonData[i].boardingDay.toString() + "</button>");
+    strHtml.push("<div class='listBusDetails"+i+" w3-animate-opacity' style='display: none; width: 280px; border: 1px solid black;'><table><tr><td><p>탑승 날짜</p></td><td><p class='boardingDay'>"+boardingDay+"</p></td></tr><tr><td><p>탑승 여부</p></td><td><p class='boardingYn'>"+boardingYn+"</p></td></tr><tr><td><p>노선 이름</p></td><td><p class='lineName'>"+lineName+"</p></td></tr><tr><td><p>노선 정의</p></td><td><p class='lineDesc'>"+lineDesc+"</p></td></tr><tr><td><p>지불 금액</p></td><td><p class='payMoney'>"+payMoney+"</p></td></tr></table></div>");
+  }
+  return strHtml;
+}
+
+var currentBusDetailSeq = -1;
+
+function listbusItemsClick(seq){
+
+  $("[class^=listBusDetails]").hide();
+
+  if(currentBusDetailSeq != seq){
+    $(".listBusDetails"+seq).show();
+    
+    currentBusDetailSeq = seq;
+  }
+  else{
+    currentBusDetailSeq = -1;
+  }
 }

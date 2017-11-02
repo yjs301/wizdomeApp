@@ -10,9 +10,6 @@
   "location": {
     "support": {
       "ticket_sidebar": "assets/main.html"
-    },
-    "chat": {
-      "chat_sidebar": "assets/main.html"
     }
   },
   "version": "1.0",
