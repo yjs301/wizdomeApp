@@ -1,5 +1,5 @@
 {
-  "name": "Wizdome APP for Chat",
+  "name": "위즈돔 E-Bus 챗앱",
   "author": {
     "name": "JASON",
     "email": "yjs_301@naver.com",
@@ -9,7 +9,7 @@
   "private": true,
   "location": {
     "chat": {
-      "chat_sidebar": "assets/iframe.html"
+      "chat_sidebar": "assets/main.html"
     }
   },
   "version": "1.0",
