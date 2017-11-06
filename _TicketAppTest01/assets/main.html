@@ -11,6 +11,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvr4zHR2ixhVBJbL4Bg74Vz1zbPnCPq6s"
   type="text/javascript"></script>
   <script type="text/javascript" src='./main.js'></script>
+  <script type="text/javascript" src='./busmap.js'></script>
 </head>
 <body>
 
@@ -48,7 +49,11 @@
             <tr><td><p>노선 정의</p></td><td><p class="lineDesc">lineDesc</p></td></tr>
             <tr><td><p>지불 금액</p></td><td><p class="payMoney">payMoney</p></td></tr>
           </table>
-        <!-- <div id=map></div> -->
+
+          <div class="divHeader">
+            <h2 class="u-infoDash">실시간 버스위치</h2>
+          </div>
+          <Canvas id="busmap"></Canvas>
     </div>
 
     <div id=div_User class="div_navi w3-container city w3-animate-opacity w3-light-gray">
@@ -65,7 +70,7 @@
 
     <div id=div_Bus class="div_navi w3-container city w3-animate-opacity w3-light-gray">
         <div class="divHeader">
-            <h2 class="b-infoBus">예약 히스토리</h2>
+            <h2 class="b-infoBus">지난 탑승정보</h2>
         </div>
         <div class="listBus"></div>
     </div>

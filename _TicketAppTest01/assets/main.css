@@ -121,3 +121,13 @@ img{
 .stopNameOn{
 	font-size: 11px;
 }
+
+#busmap{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 100px;
+	width: 100%;
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: #FFFFCC;
+}

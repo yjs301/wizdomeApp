@@ -124,16 +124,21 @@ function openNavi(evt, Name) {
 function listbusItems(jsonData){
   var strHtml = new Array();
 
+  var busInfoList = ['boardingYn', 'stopNameOn', 'boardingDay', 'boardingTime'];
+
   for(i = 0; i < jsonData.length; i++){
 
-    var boardingDay = jsonData[i].boardingDay.toString();
-    var boardingYn = jsonData[i].boardingYn.toString();
     var lineName = jsonData[i].lineName.toString();
-    var lineDesc = jsonData[i].lineDesc.toString();
-    var payMoney = jsonData[i].payMoney.toString();
+    var boardingYn = jsonData[i].boardingYn.toString();
+    var stopNameOn = jsonData[i].stopNameOn.toString();
+    var boardingDay = jsonData[i].boardingDay.toString();
+    var boardingTime = " ";
+    if(typeof jsonData[i].boardingTime == 'string'){
+      var boardingTime = jsonData[i].boardingTime.toString();
+    }
 
-    strHtml.push("<button class='w3-button listlink w3-Khaki' style='width: 280px; text-align: center; display: block; margin: 10px -57px 0; border-radius: 5px;' onclick='listbusItemsClick("+i+")'> 탑승 날짜: " + jsonData[i].boardingDay.toString() + "</button>");
-    strHtml.push("<div class='listBusDetails"+i+" w3-animate-opacity' style='display: none; width: 280px; margin: -1px -57px 10px; background-color: #FFFFCC;'><table><tr><td><p>탑승 날짜</p></td><td><p class='boardingDay'>"+boardingDay+"</p></td></tr><tr><td><p>탑승 여부</p></td><td><p class='boardingYn'>"+boardingYn+"</p></td></tr><tr><td><p>노선 이름</p></td><td><p class='lineName'>"+lineName+"</p></td></tr><tr><td><p>노선 정의</p></td><td><p class='lineDesc'>"+lineDesc+"</p></td></tr><tr><td><p>지불 금액</p></td><td><p class='payMoney'>"+payMoney+"</p></td></tr></table></div>");
+    strHtml.push("<button class='w3-button listlink w3-Khaki' style='width: 280px; text-align: center; display: block; margin: 10px -57px 0; border-radius: 5px;' onclick='listbusItemsClick("+i+")'> " + jsonData[i].boardingDay.toString()  + " | " + lineName+ "</button>");
+    strHtml.push("<div class='listBusDetails"+i+" w3-animate-opacity' style='display: none; width: 280px; margin: -1px -57px 10px; background-color: #FFFFCC;'><table><tr><td><p>탑승 여부: </p></td><td><p class='boardingYn'>"+boardingYn+"</p></td></tr><tr><td><p>태깅 장소: </p></td><td><p class='stopNameOn'>"+stopNameOn+"</p></td></tr><tr><td><p>탑승 일시: </p></td><td><p class='boardingDay&Time'>"+boardingDay + " " + boardingTime+"</p></td></tr></table></div>");
   }
   return strHtml;
 }
