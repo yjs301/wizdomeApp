@@ -1,85 +1,98 @@
 
 var canvas, context, stations;
+var jsonData;
+
+var hover = false, id, prvid;
+var _i, _b;
 
 $.support.cors = true;
 
 $(document).ready(function(){
 	initDraw();
-	getAPIdata();
 });
 
 function initDraw(){
 	canvas = document.getElementById("busmap");
 	context = canvas.getContext("2d");
 
-	canvas.addEventListener("mousemove", mouseMove, false);
+	context.canvas.height = 130;
 
 	context.beginPath();
 	context.strokeStyle="#F8B200";
 	context.lineWidth = 5;
-	context.moveTo(30,100);
-	context.lineTo(270,100);
+	context.moveTo(10,100);
+	context.lineTo(290,100);
 	context.stroke();
 
-	context.beginPath();
-	context.arc(30, 100, 10 ,0, 2*Math.PI);
-	context.strokeStyle="#F8B200";
-	context.fillStyle="#595857";
-	context.lineWidth = 3;
-	context.fill();
-	context.stroke();
+	getAPIdata();
+	renderStations();
+	drawBusLocation();
 
-	context.beginPath();
-	context.arc(150, 100, 10 ,0, 2*Math.PI);
-	context.strokeStyle="#F8B200";
-	context.fillStyle="#595857";
-	context.fill();
-	context.stroke();
-
-	context.beginPath();
-	context.arc(270, 100, 10 ,0, 2*Math.PI);
-	context.strokeStyle="#F8B200";
-	context.fillStyle="#595857";
-	context.fill();
-	context.stroke();
+	canvas.addEventListener("mousemove", mouseMove, false);
+	
 }
 
 function getAPIdata(){
 
 	//전, 현, 다음 정류장 이름과 버스 위치정보
-	var jsonData = JSON.parse('{ "firstSta":"정류소1" ,"currSta": "정류소2", "lastSta":"정류소3" ,"busLoca" : "80"}');
+	jsonData = JSON.parse('{ "firstSta":"정류소1" ,"secondSta": "정류소2", "lastSta":"정류소3" ,"busLoca" : [true, true, false, false, false, false, false]}');
 
-	drawBusLocation(jsonData);
 }
 
-function drawBusLocation(jsonData){
+function renderStations(){
+	stations = [
+		{x:60, y:100, r:10, sr:0, er: 2*Math.PI},
+		{x:150, y:100, r:10, sr:0, er: 2*Math.PI},
+		{x:240, y:100, r:10, sr:0, er:2*Math.PI}
+	];
+	
+	var namesInfo = [
+		{ta : "start", x: 10, y: 140, js : jsonData.firstSta}, 
+		{ta : "center", x: 150, y: 140, js : jsonData.secondSta},
+		{ta : "right", x: 290, y: 140, js : jsonData.lastSta}
+	];
 
-	stations = new Array();
+	for(_i = 0; _b = stations[_i]; _i ++){
+		context.beginPath();
+		context.strokeStyle = (hover && id === _i) ? "#607D8B" : "#F8B200";
+		context.fillStyle = (hover && id === _i) ? "#ffffff" : "#595857";
+		context.arc(stations[_i].x, stations[_i].y, stations[_i].r, stations[_i].sr, stations[_i].er);
+		context.fill();
+		context.stroke();
+	}
 
-	context.beginPath();
-	context.textAlign = "start";
-	context.font = '20px malgun-gothic';
-	context.fillText(jsonData.firstSta,10,140);
-	context.stroke();
+	for(_i = 0; _b = stations[_i]; _i ++){
+		if(hover && id === _i){
+			$('.StaInfo').text(namesInfo[_i].js);
+		}
+	}
+}
+
+function drawBusLocation(){
+
+	context.save();
+
+	var busPosDefault = [30, 60, 105, 150, 195, 240 ,270];
+	var currBusPos = 0;
+	for(i = 0; i < busPosDefault.length; i++){
+		if(jsonData.busLoca[i]){
+			currBusPos = busPosDefault[i];
+		}
+	}
 
 	context.beginPath();
 	context.textAlign = "center";
-	context.font = '20px malgun-gothic';
-	context.fillText(jsonData.currSta,150,140);
-	context.stroke();
-
-	context.beginPath();
-	context.textAlign = "right";
-	context.font = '20px malgun-gothic';
-	context.fillText(jsonData.lastSta,290,140);
-	context.stroke();
-
-	context.beginPath();
-	context.textAlign = "center";
+	context.fillStyle = "#595857";
 	context.font = '40px fontawesome';
-	context.fillText("\uf207",jsonData.busLoca,90);
+	context.fillText("\uf207",currBusPos,85);
 	context.stroke();
 
+	var img = new Image();
+	img.src = "./marker.svg";
+	img.onload = function(){
+		context.drawImage(img, 215, 35, 50, 50);
+	}
+	context.restore();
 	// setInterval(drawBusIcon,100);
 	// setInterval(rotate, 100);
 }
@@ -108,15 +121,22 @@ function drawBusLocation(jsonData){
 
 // }
 
-function mouseMove(event){
-	var position = getMousePos(canvas, event);
-	
-}
+function mouseMove(evt) {
+    var rect = canvas.getBoundingClientRect(),
+    x = evt.clientX - rect.left,
+    y = evt.clientY - rect.top + 40; // 높이 오차 40px
 
-function getMousePos(canvas, evt) {
-    var rect = canvas.getBoundingClientRect();
-    return {
-        x: evt.clientX - rect.left,
-        y: evt.clientY - rect.top
-    };
+    hover = false;
+
+    for(var i = stations.length - 1, b; b = stations[i]; i--) {
+        if(x >= b.x - b.r*2 && x <= b.x + b.r 
+        	&& y >= b.y - b.r && y <= b.y + b.r*2) {
+            // The mouse honestly hits the rect
+            hover = true;
+            id = i;
+            break;
+        }
+    }
+
+    renderStations();
 }
