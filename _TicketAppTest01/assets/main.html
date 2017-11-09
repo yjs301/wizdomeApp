@@ -12,6 +12,7 @@
   type="text/javascript"></script>
   <script type="text/javascript" src='./main.js'></script>
   <script type="text/javascript" src='./busmap.js'></script>
+
 </head>
 <body>
 
@@ -32,9 +33,9 @@
             <h2 class="u-infoDash">고객 정보</h2>
         </div>
           <table class="wapperTable">
-            <tr><td><span title="사용자 이름"><p><i class="glyphicon glyphicon-user smallicon"></i></p></span></td><td><p class="userName">userName</p></td></tr>
-            <tr><td><span title="전화번호"><p><i class="glyphicon glyphicon-phone smallicon"></i></p></span></td><td><p class="userPhone">userPhone</p></td></tr>
-            <tr><td><span title="이메일 주소"><p><i class="fa fa-envelope smallicon" aria-hidden="true"></i></p></span></td><td><p class="userEmail">userEmail</p></td></tr>
+            <tr><td><span title="사용자 이름"><p><i class="glyphicon glyphicon-user smallicon"></i></p></span></td><td><p class="userName">-</p></td></tr>
+            <tr><td><span title="회사 소속"><p><i class="fa fa-building-o smallicon" aria-hidden="true"></i></p></span></td><td><p class="company">-</p></td></tr>
+            <tr><td><span title="전화번호"><p><i class="glyphicon glyphicon-phone smallicon"></i></p></span></td><td><p class="userPhone">-</p></td></tr>
           </table>
 
           <div class="divHeader">
@@ -55,7 +56,8 @@
           </div>
           <Canvas id="busmap"></Canvas>
           <table class="wapperTable">
-            <tr><td style="width: 100px;"><p>정류소 이름</p></td><td><p class="StaInfo">정류소를 선택하십시오</p></td></tr>
+            <tr><td style="width: 70px;"><p>정류장</p></td><td><p class="StaName">정류장을 선택하십시오</p></td></tr>
+            <tr><td style="width: 70px;"><p>상태</p></td><td><p class="StaIsThru">정류장을 선택하십시오</p></td></tr>
           </table>
           <button class="w3-button w3-Khaki" style="margin-bottom : 10px; border-radius: 5px;" onclick="">상세지도 열기</button>
 

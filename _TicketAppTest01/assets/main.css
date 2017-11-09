@@ -23,6 +23,10 @@ img{
 	vertical-align: middle;
 }
 
+td > * {
+    vertical-align : middle;
+}
+
 .glyphicon {
     font-size: 32px;
 }
@@ -69,6 +73,14 @@ img{
 	background: #FFFFCC;
 }
 
+.wapperTable tr{
+	transition: background 0.3s ease;
+}
+
+.wapperTable tr:hover{
+   	background: #F0E68C;
+}
+
 .wapperTable td{
     border-top:solid #F1F1F1 3px;
 }
@@ -77,12 +89,9 @@ img{
 	background-color: #F0E68C;
 }
 
-.wapperTable tr:hover{
-   	background: #F0E68C;
-}
-
 .wapperTable p{
 	text-align: center;
+	margin: 10px 3px 10px 3px;
 }
 
 #div_Dash{

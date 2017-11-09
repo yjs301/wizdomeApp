@@ -159,8 +159,8 @@ function listbusItems(jsonData){
       var boardingTime = jsonData[i].boardingTime.toString();
     }
 
-    strHtml.push("<button class='w3-button listlink w3-Khaki' style='width: 280px; text-align: center; display: block; margin: 10px -57px 0; border-radius: 5px;' onclick='listbusItemsClick("+i+")'> " + jsonData[i].boardingDay.toString()  + " | " + lineName+ "</button>");
-    strHtml.push("<div class='listBusDetails"+i+" w3-animate-opacity' style='display: none; width: 280px; margin: -1px -57px 10px; background-color: #FFFFCC;'><table class='wapperTableS'><tr><td><p>탑승 여부 </p></td><td><p class='boardingYn'>"+boardingYn+"</p></td></tr><tr><td><p>태깅 장소 </p></td><td><p class='stopNameOn'>"+stopNameOn+"</p></td></tr><tr><td><p>탑승 일시 </p></td><td><p class='boardingDay&Time'>"+boardingDay + " " + boardingTime+"</p></td></tr></table></div>");
+    strHtml.push("<button class='w3-button listlink w3-Khaki' style='width: 290px; text-align: center; display: block; margin: 10px -67px 0; border-radius: 5px;' onclick='listbusItemsClick("+i+")'> " + jsonData[i].boardingDay.toString()  + " | " + lineName+ "</button>");
+    strHtml.push("<div class='listBusDetails"+i+" w3-animate-opacity' style='display: none; width: 290px; margin: -1px -67px 10px; background-color: #FFFFCC;'><table class='wapperTable'><tr><td><p>탑승 여부 </p></td><td><p class='boardingYn'>"+boardingYn+"</p></td></tr><tr><td><p>태깅 장소 </p></td><td><p class='stopNameOn'>"+stopNameOn+"</p></td></tr><tr><td><p>탑승 일시 </p></td><td><p class='boardingDay&Time'>"+boardingDay + " " + boardingTime+"</p></td></tr></table></div>");
   }
   return strHtml;
 }
