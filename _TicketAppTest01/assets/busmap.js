@@ -10,30 +10,29 @@ var ringX, ringY, ringRadius, ingCounter, ringCounterVelocity, ringAlpha, ringAl
 
 $.support.cors = true;
 
-$(document).ready(function(){
-	initDraw();
-});
+// $(document).ready(function(){
+// 	initDraw();
+// });
 
-function initDraw(){
+function initDraw(Data){
+
+	jsonData = JSON.parse('{ "firstSta":"사당역" ,"secondSta": "양재역", "lastSta":"잠실역" ,"busLoca" : [true, true, true, false, false, false, false]}');
+	if(Data != null){
+		jsonData = Data;
+		// console.log(Data);
+	}
+	
 	canvas = document.getElementById("busmap");
 	context = canvas.getContext("2d");
 
 	context.canvas.height = 130;
 
-	getAPIdata();
 	renderStations();context.clearRect(0, 0, canvas.width, canvas.height);
 	renderBusLocation();
 	renderRing();
 
 	canvas.addEventListener("mousemove", mouseMove, false);
 	
-}
-
-function getAPIdata(){
-
-	//전, 현, 다음 정류장 이름과 버스 위치정보
-	jsonData = JSON.parse('{ "firstSta":"사당역" ,"secondSta": "양재역", "lastSta":"잠실역" ,"busLoca" : [true, true, true, false, false, false, false]}');
-
 }
 
 function clearRender(){

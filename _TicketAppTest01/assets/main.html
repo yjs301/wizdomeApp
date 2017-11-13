@@ -152,9 +152,11 @@
       }
     });
 
+    update();
+
     });
     }
-    else{
+    else{ // 로컬에서 동작시 실행
 
     var server = 'http://103.60.125.67:8080';
     // var server = "https://103.60.125.67:8443";
@@ -162,6 +164,7 @@
     var userID = '01099868601';
     var userAPIURL = server + '/api/user/' + userID;
     var busAPIURL = server + '/api/boarding/list?user_id=' + userID;
+    var busLocaAPIURL = server;
 
     $.ajax({
       type: 'get',
@@ -194,8 +197,37 @@
         initBus(json);
       }
     });
+
+
+    initDraw(null);
+
     }
     
+    var counter = 0;
+
+    function update(){
+
+      if(counter == 0){
+        counter = 60;
+        $.ajax({
+        type: 'get',
+        url: busLocaAPIURL,
+        headers : {
+          'Content-Type':'application/x-www-form-urlencoded'
+        },
+        error: function(error){
+          console.log('실시간 버스 정보를 불러올 수 없습니다.');
+          console.log(error);
+        },
+        success: function(json){
+          console.log(json.data);
+          initDraw(json.data);
+        }
+      });
+      }
+      counter--;
+      setTimeout(update, 1000);
+    }
 
   </script>
 </body>
