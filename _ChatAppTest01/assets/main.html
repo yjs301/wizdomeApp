@@ -42,13 +42,13 @@
             <h2 class="u-infoDash">최근 예약정보</h2>
           </div>
           <table class="wapperTable">
-            <tr><td><p>탑승 날짜</p></td><td><p class="boardingDay">boardingDay</p></td></tr>
-            <tr><td><p>출발 시각</p></td><td><p class="boardingTime">boardingTime</p></td></tr>
-            <tr><td><p>탑승 장소</p></td><td><p class="stopNameOn">stopNameOn</p></td></tr>
-            <tr><td><p>탑승 여부</p></td><td><p class="boardingYn">boardingYn</p></td></tr>
-            <tr><td><p>노선 이름</p></td><td><p class="lineName">lineName</p></td></tr>
-            <tr><td><p>노선 정의</p></td><td><p class="lineDesc">lineDesc</p></td></tr>
-            <tr><td><p>지불 금액</p></td><td><p class="payMoney">payMoney</p></td></tr>
+            <tr><td><p>탑승 날짜</p></td><td><p class="boardingDay">-</p></td></tr>
+            <tr><td><p>출발 시각</p></td><td><p class="boardingTime">-</p></td></tr>
+            <tr><td><p>탑승 장소</p></td><td><p class="stopNameOn">-</p></td></tr>
+            <tr><td><p>탑승 여부</p></td><td><p class="boardingYn">-</p></td></tr>
+            <tr><td><p>노선 이름</p></td><td><p class="lineName">-</p></td></tr>
+            <tr><td><p>노선 정의</p></td><td><p class="lineDesc">-</p></td></tr>
+            <tr><td><p>지불 금액</p></td><td><p class="payMoney">-</p></td></tr>
           </table>
 
           <div class="divHeader">
@@ -68,9 +68,9 @@
             <h2 class="u-infoUser1">고객 정보 (상세)</h2>
         </div>
           <table class="wapperTable">
-            <tr><td><span title="사용자 이름"><p><i class="glyphicon glyphicon-user smallicon"></i></p></span></td><td><p class="userName">userName</p></td></tr>
-            <tr><td><span title="전화번호"><p><i class="glyphicon glyphicon-phone smallicon"></i></p></span></td><td><p class="userPhone">userPhone</p></td></tr>
-            <tr><td><span title="이메일 주소"><p><i class="fa fa-envelope smallicon" aria-hidden="true"></i></p></span></td><td><p class="userEmail">userEmail</p></td></tr>
+            <tr><td><span title="사용자 이름"><p><i class="glyphicon glyphicon-user smallicon"></i></p></span></td><td><p class="userName">-</p></td></tr>
+            <tr><td><span title="전화번호"><p><i class="glyphicon glyphicon-phone smallicon"></i></p></span></td><td><p class="userPhone">-</p></td></tr>
+            <tr><td><span title="이메일 주소"><p><i class="fa fa-envelope smallicon" aria-hidden="true"></i></p></span></td><td><p class="userEmail">-</p></td></tr>
             
           </table>
     </div>
@@ -94,9 +94,10 @@
     // Initialise the Zendesk JavaScript API client
     // https://developer.zendesk.com/apps/docs/apps-v2
     var client = ZAFClient.init();
+    var userAPIURL, busAPIURL, busLocaAPIURL;
 
     if(client){
-      client.invoke('resize', { width: '100%', height: '700px' });
+      client.invoke('resize', { width: '100%', height: '900px' });
 
     client.get('visitor.phone').then(function(data) {
     // console.log("이름 : " + data['ticket.requester'].name);
@@ -111,9 +112,9 @@
     var server = "https://103.60.125.67:8443";
 
     var userID = data['visitor.phone'];
-    var userAPIURL = server + '/api/user/' + userID;
-    var busAPIURL = server + '/api/boarding/list?user_id=' + userID;
-    var busLocaAPIURL = server + '/api/bus/location?user_id=' + userID;
+    userAPIURL = server + '/api/user/' + userID;
+    busAPIURL = server + '/api/boarding/list?user_id=' + userID;
+    busLocaAPIURL = server + '/api/bus/location?user_id=' + userID;
 
     $.ajax({
       type: 'get',
@@ -157,9 +158,9 @@
     // var server = "https://103.60.125.67:8443";
 
     var userID = '01099868601';
-    var userAPIURL = server + '/api/user/' + userID;
-    var busAPIURL = server + '/api/boarding/list?user_id=' + userID;
-    var busLocaAPIURL = server + '/api/bus/location?user_id=' + userID;
+    userAPIURL = server + '/api/user/' + userID;
+    busAPIURL = server + '/api/boarding/list?user_id=' + userID;
+    busLocaAPIURL = server + '/api/bus/location?user_id=' + userID;
 
     $.ajax({
       type: 'get',

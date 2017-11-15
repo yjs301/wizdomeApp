@@ -18,23 +18,33 @@ $.support.cors = true;
 
 function initDraw(Data){
 
-	jsonData = JSON.parse('{ "firstSta":"사당역" ,"secondSta": "양재역", "lastSta":"잠실역" ,"busLoca" : [true, true, true, false, false, false, false]}');
+	jsonData = JSON.parse('{ "firstSta":"null" ,"secondSta": "null", "lastSta":"null" ,"busLoca" : [true, true, true, true, true, true, true]}');
 	if(Data != null){
 		jsonData = Data[0];
-		// console.log(Data[0]);
+		console.log(Data[0]);
 	}
 	
 	canvas = document.getElementById("busmap");
 	context = canvas.getContext("2d");
 
 	context.canvas.height = 130;
+	context.clearRect(0, 0, canvas.width, canvas.height);
 
-	renderStations();context.clearRect(0, 0, canvas.width, canvas.height);
+
+if(jsonData.firstSta == null && jsonData.secondSta == null && jsonData.lastSta == null || Data == undefined){
+	context.textAlign = "center";
+
+	context.fillStyle = "#595857";
+	context.font = '22px MalgunGothic';
+	context.fillText("금일 운행 기록이 없습니다.", canvas.width / 2, canvas.height / 2);
+}
+else{
+	renderStations();
 	renderBusLocation();
 	renderRing();
 
 	canvas.addEventListener("mousemove", mouseMove, false);
-	
+}
 }
 
 function clearRender(){
@@ -99,7 +109,6 @@ function renderStations(){
 function renderBusLocation(){
 
 	context.save();
-
 	var busPosDefault = [30, 60, 105, 150, 195, 240 ,290];
 	var currBusPos = 0;
 	for(i = 0; i < busPosDefault.length; i++){

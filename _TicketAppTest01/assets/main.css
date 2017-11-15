@@ -87,6 +87,11 @@ td > * {
 
 .wapperTable td:first-child{
 	background-color: #F0E68C;
+	width: 60px;
+}
+
+.wapperTable td:first-child p{
+	font-size: 12px;
 }
 
 .wapperTable p{

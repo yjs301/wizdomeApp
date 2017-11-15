@@ -60,14 +60,16 @@ function initBus(jsonData){
   var latestDay = 0;
   var latestDaySeq = 0;
 
+  if(jsonData == undefined){return;}
+
+  $('.affiliation').text(jsonData.data[latestDaySeq].affiliation.toString());
+
   for(i = 0; i < jsonData.data.length; i++){
     if(jsonData.data[i].boardingDay > latestDay){
       latestDay = jsonData.data[i].boardingDay;
       latestDaySeq = i;
     }
   }
-
-  $('.affiliation').text(jsonData.data[latestDaySeq].affiliation.toString());
 
   var busInfoList = ['boardingDay', 'boardingTime', 'stopNameOn', 'boardingYn', 'lineName', 'lineDesc', 'payMoney'];
 

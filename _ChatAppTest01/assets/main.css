@@ -95,6 +95,11 @@ h2{
 	width: 60px;
 }
 
+.wapperTable td:first-child p{
+	font-size: 12px;
+}
+
+
 .wapperTable p{
 	text-align: center;
 
