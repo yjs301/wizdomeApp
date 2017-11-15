@@ -112,6 +112,12 @@
     var server = "https://103.60.125.67:8443";
 
     var userID = data['visitor.phone'];
+
+    if(userID.indexOf("+182") != -1){
+      userID = '0' + userID.split("+182")[1];
+      console.log(userID);
+    }
+
     userAPIURL = server + '/api/user/' + userID;
     busAPIURL = server + '/api/boarding/list?user_id=' + userID;
     busLocaAPIURL = server + '/api/bus/location?user_id=' + userID;
