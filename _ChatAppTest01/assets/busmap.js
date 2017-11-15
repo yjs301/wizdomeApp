@@ -205,13 +205,13 @@ function easeInCubic(now, startValue, deltaValue, duration) {
 
 function mouseMove(evt) {
     var rect = canvas.getBoundingClientRect(),
-    x = evt.clientX - rect.left,
+    x = evt.clientX - rect.left + 32,
     y = evt.clientY - rect.top + 40; // 높이 오차 40px
 
     hover = false;
 
     for(var i = stations.length - 1, b; b = stations[i]; i--) {
-        if(x >= b.x - b.r*2 && x <= b.x + b.r 
+        if(x >= b.x - b.r*4 && x <= b.x + b.r 
         	&& y >= b.y - b.r && y <= b.y + b.r*2) {
             // The mouse honestly hits the rect
             hover = true;

@@ -8,20 +8,18 @@ var _i, _b;
 var PI2 = Math.PI * 2;
 var ringX, ringY, ringRadius, ingCounter, ringCounterVelocity, ringAlpha, ringAlphaVelocity;
 
-var fps = 60;
-var now;
-var then = Date.now();
-var interval = 1000/fps;
-var delta;
-
 $.support.cors = true;
+
+// $(document).ready(function(){
+// 	initDraw();
+// });
 
 function initDraw(Data){
 
 	jsonData = JSON.parse('{ "firstSta":"사당역" ,"secondSta": "양재역", "lastSta":"잠실역" ,"busLoca" : [true, true, true, false, false, false, false]}');
 	if(Data != null){
-		jsonData = Data[0];
-		// console.log(Data[0]);
+		jsonData = Data;
+		// console.log(Data);
 	}
 	
 	canvas = document.getElementById("busmap");
@@ -100,7 +98,7 @@ function renderBusLocation(){
 
 	context.save();
 
-	var busPosDefault = [30, 60, 105, 150, 195, 240 ,290];
+	var busPosDefault = [30, 60, 105, 150, 195, 240 ,270];
 	var currBusPos = 0;
 	for(i = 0; i < busPosDefault.length; i++){
 		if(jsonData.busLoca[i]){
@@ -118,7 +116,7 @@ function renderBusLocation(){
 
 function renderRing(){
 
-	var busPosDefault = [30, 60, 105, 150, 195, 240 ,290];
+	var busPosDefault = [30, 60, 105, 150, 195, 240 ,270];
 	var currBusPos = 0;
 	for(i = 0; i < busPosDefault.length; i++){
 		if(jsonData.busLoca[i]){
@@ -135,59 +133,62 @@ function renderRing(){
     ringAlpha = 0;
     ringAlphaVelocity = 0.05;
 
-    animate();
+	requestAnimationFrame(animate);
 }
 
 function animate(){
 	 // return if the animation is complete
     if (ringCounter > 100) {
     	ringCounter = 0;
+    	requestAnimationFrame(animate);
+        return;
     }
 
     // otherwise request another animation loop
    requestAnimationFrame(animate);
 
-    now = Date.now();
-    delta = now - then;
+   context.save();
 
-    if (delta > interval) {
-        then = now - (delta % interval);
+    // ringCounter<100 means the ring is expanding
+    // ringCounter>=100 means the ring is shrinking
+    if (ringCounter < 100) {
+        // expand the ring using easeInCubic easing
+        ringRadiusX = easeInCubic(ringCounter, 0, 15, 100);
+        ringRadiusY = easeInCubic(ringCounter, 0, 30, 100);
+    } 
 
-	   context.save();
-
-	    // ringCounter<100 means the ring is expanding
-	    // ringCounter>=100 means the ring is shrinking
-	    if (ringCounter < 100) {
-	        // expand the ring using easeInCubic easing
-	        ringRadiusX = easeInCubic(ringCounter, 0, 15, 100);
-	        ringRadiusY = easeInCubic(ringCounter, 0, 30, 100);
-	    } 
-
-	    if(ringCounter < 50){
-	    	ringAlpha += ringAlphaVelocity;
-	    }
-	    else{
-	    	if(ringAlpha <= 0.1){
-	    		ringAlpha = 0;
-	    	}
-	    	else{
-	    		ringAlpha -= ringAlphaVelocity;
-	    	}
-	    }
-	    
-	    clearRender();
-	    context.beginPath();
-	    context.lineWidth = 4;
-	    context.strokeStyle = "#595857";
-	    context.globalAlpha = ringAlpha;
-	    context.ellipse(ringX, ringY, ringRadiusX, ringRadiusY, 90 * Math.PI/180, 0, 2 * Math.PI);
-	    context.closePath();
-	    context.stroke();
-	    context.restore();
-
-	    // increment the ringCounter for the next loop
-	    ringCounter += ringCounterVelocity;
+    if(ringCounter < 50){
+    	ringAlpha += ringAlphaVelocity;
     }
+    else{
+    	if(ringAlpha <= 0.1){
+    		ringAlpha = 0;
+    	}
+    	else{
+    		ringAlpha -= ringAlphaVelocity;
+    	}
+    }
+    // else {
+    //     // shrink the ring using easeOutCubic easing
+    //     ringRadiusX = easeOutCubic(ringCounter - 100, 15, -15, 100);
+    //     ringRadiusY = easeOutCubic(ringCounter - 100, 30, -30, 100);
+    // }
+
+    // draw the ring at the radius set using the easing functions
+    // context.fillRect(0, 0, canvas.width, canvas.height);
+    
+    clearRender();
+    context.beginPath();
+    context.lineWidth = 4;
+    context.strokeStyle = "#595857";
+    context.globalAlpha = ringAlpha;
+    context.ellipse(ringX, ringY, ringRadiusX, ringRadiusY, 90 * Math.PI/180, 0, 2 * Math.PI);
+    context.closePath();
+    context.stroke();
+    context.restore();
+
+    // increment the ringCounter for the next loop
+    ringCounter += ringCounterVelocity;
 }
 
 //  Robert Penner's easing functions
@@ -202,6 +203,10 @@ function animate(){
 function easeInCubic(now, startValue, deltaValue, duration) {
     return deltaValue * (now /= duration) * now * now + startValue;
 }
+
+// function easeOutCubic(now, startValue, deltaValue, duration) {
+//     return deltaValue * ((now = now / duration - 1) * now * now + 1) + startValue;
+// }
 
 function mouseMove(evt) {
     var rect = canvas.getBoundingClientRect(),
