@@ -21,7 +21,7 @@ function initDraw(Data){
 	jsonData = JSON.parse('{ "firstSta":"null" ,"secondSta": "null", "lastSta":"null" ,"busLoca" : [true, true, true, true, true, true, true]}');
 	if(Data != null){
 		jsonData = Data[0];
-		console.log(Data[0]);
+		// console.log(Data[0]);
 	}
 	
 	canvas = document.getElementById("busmap");

@@ -113,6 +113,7 @@ h2{
 #div_User {
 	text-align: center;
 	display: none;
+	min-height: 700px;
 }
 
 #div_User > div {
@@ -143,6 +144,7 @@ h2{
 #div_Bus{
 	text-align: center;
 	display: none;
+	min-height: 700px;
 }
 
 .listBus{
