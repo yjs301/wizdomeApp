@@ -18,7 +18,7 @@ $.support.cors = true;
 
 function initDraw(Data){
 
-	jsonData = JSON.parse('{ "firstSta":"null" ,"secondSta": "null", "lastSta":"null" ,"busLoca" : [true, true, true, true, true, true, true]}');
+	jsonData = JSON.parse('{ "firstSta":"null" ,"secondSta": "null", "lastSta":"null" ,"busLoca" : [true, true, false, false, false, false, false]}');
 	if(Data != null){
 		jsonData = Data[0];
 		console.log(Data[0]);
@@ -32,11 +32,16 @@ function initDraw(Data){
 
 
 if(jsonData.firstSta == null && jsonData.secondSta == null && jsonData.lastSta == null || Data == undefined){
-	context.textAlign = "center";
+	// context.textAlign = "center";
 
-	context.fillStyle = "#595857";
-	context.font = '22px MalgunGothic';
-	context.fillText("금일 운행 기록이 없습니다.", canvas.width / 2, canvas.height / 2);
+	// context.fillStyle = "#595857";
+	// context.font = '22px MalgunGothic';
+	// context.fillText("금일 운행 기록이 없습니다.", canvas.width / 2, canvas.height / 2);
+	renderStations();
+	renderBusLocation();
+	renderRing();
+
+	canvas.addEventListener("mousemove", mouseMove, false);
 }
 else{
 	renderStations();
