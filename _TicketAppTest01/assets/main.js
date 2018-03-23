@@ -127,13 +127,13 @@ function openNavi(evt, Name) {
     var x = document.getElementsByClassName("div_navi");
 
     for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";  
+       x[i].style.display = "none";
     }
 
     tablinks = document.getElementsByClassName("tablink");
 
     for(i=0; i < x.length; i++){
-      tablinks[i].className = tablinks[i].className.replace(" w3-blue-gray", " w3-Khaki");
+      tablinks[i].className = tablinks[i].className.replace(" color-lightgray", " color-white");
     }
 
     if(Name == "Dash"){
@@ -145,7 +145,7 @@ function openNavi(evt, Name) {
       document.getElementById(Name).style.display = "block";  
     }
     
-    evt.currentTarget.className = evt.currentTarget.className.toString().replace(" w3-Khaki", " w3-blue-gray");
+    evt.currentTarget.className = evt.currentTarget.className.toString().replace(" color-white", " color-lightgray");
 }
 
 function listbusItems(jsonData){
@@ -169,7 +169,7 @@ function listbusItems(jsonData){
     }
 
     strHtml.push("<button class='w3-button listlink w3-Khaki' style='width: 220px; text-align: center; display: block; margin: 10px -30px 0; border-radius: 5px;' onclick='listbusItemsClick("+i+")'> " + jsonData[i].boardingDay.toString()  + " | " + lineName+ "</button>");
-    strHtml.push("<div class='listBusDetails"+i+" w3-animate-opacity' style='display: none; width: 220px; margin: -1px -30px 10px; background-color: #FFFFCC;'><table class='wapperTable'><tr><td><p>탑승 여부 </p></td><td><p class='boardingYn'>"+boardingYn+"</p></td></tr><tr><td><p>태깅 장소 </p></td><td><p class='stopNameOn'>"+stopNameOn+"</p></td></tr><tr><td><p>탑승 일시 </p></td><td><p class='boardingDay&Time'>"+boardingDay + " " + boardingTime+"</p></td></tr></table></div>");
+    strHtml.push("<div class='listBusDetails"+i+" w3-animate-opacity' style='display: none; width: 220px; margin: -1px -30px 10px; background-color: #FFFFCC;'><table class='table wapperTable'><tr><td><p>탑승 여부 </p></td><td><p class='boardingYn'>"+boardingYn+"</p></td></tr><tr><td><p>태깅 장소 </p></td><td><p class='stopNameOn'>"+stopNameOn+"</p></td></tr><tr><td><p>탑승 일시 </p></td><td><p class='boardingDay&Time'>"+boardingDay + " " + boardingTime+"</p></td></tr></table></div>");
   }
   return strHtml;
 }

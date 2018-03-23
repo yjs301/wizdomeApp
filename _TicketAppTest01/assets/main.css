@@ -17,6 +17,13 @@ div{
 
 table{
 	text-align: center;
+	box-shadow: 2px 2px #BBBBBB;
+	border-radius: 0 5px 5px 5px;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+	padding: 0px;
+	line-height: 1.0;
 }
 
 img{
@@ -27,12 +34,26 @@ td > * {
     vertical-align : middle;
 }
 
-.glyphicon {
-    font-size: 32px;
+.color-darkgray{
+	color:#000 !important; background-color:#E3E3E3 !important;
 }
 
-.fa{
-	font-size:  32px;
+.color-lightgray{
+	color:#000 !important; background-color:#f6f6f6 !important;
+}
+
+.color-white{
+	color:#BBBBBB !important; background-color:#e2e2e2 !important;
+}
+
+.small-size{
+	font-size: 10px;
+	size: 10px;
+	height: 10px;
+}
+
+.glyphicon {
+    font-size: 32px;
 }
 
 .smallicon{
@@ -42,7 +63,6 @@ td > * {
 .img_frame{
 	display: inline-block;
 	vertical-align: middle;
-	margin-top: 7px;
 }
 
 .divHeader{
@@ -51,26 +71,48 @@ td > * {
 	padding: 0;
 }
 
+.divHeader p{
+	text-align: left;
+	text-weight: bold;
+}
+
 .navBar {
 	text-align: center;
 	overflow: hidden;
 	position: fixed;
 	top: 0;
 	width: 320px;
+	border-top: 1px solid #E3E3E3;
+	border-left: 1px solid #f6f6f6;
+	border-right: 1px solid #E3E3E3;
+	border-bottom: 1px solid #f6f6f6;
+	z-index: 9999;
+}
+
+.navBar .fa{
+	font-size:  32px;
+}
+
+.navBar .w3-bar-item{
+	border-left: 1px solid #E3E3E3;
+	/*border-bottom: 1px solid #E3E3E3;*/
+}
+
+.navBar .w3-bar-item p{
+	font-size: 20px;
 }
 
 .main {
 	margin-top: 50px;
+	background: #f6f6f6;
 }
 
 .wapperTable {
 	width: 100%;
 	margin: 0 0 5px;
 	border-collapse:separate;
-	border: 3px solid '#F1F1F1';
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	background: #FFFFCC;
+	border-bottom: 1px solid #E3E3E3;
+	/*background: #FFFFCC;*/
 }
 
 .wapperTable tr{
@@ -78,19 +120,34 @@ td > * {
 }
 
 .wapperTable tr:hover{
-   	background: #F0E68C;
+   	background: #E3E3E3;
+}
+
+.wapperTable tr:hover td:nth-child(1){
+	background-color: #3baaba;
 }
 
 .wapperTable td{
-    border-top:solid #F1F1F1 3px;
+    /*border-top:solid #F1F1F1 3px;*/
 }
 
-.wapperTable td:first-child{
-	background-color: #F0E68C;
-	width: 60px;
+.wapperTable td:nth-child(1){
+	/*background-color: #3baaba;*/
+	background-color: #E3E3E3;
+	width: 3px;
+	border: none;
 }
 
-.wapperTable td:first-child p{
+.wapperTable td:nth-child(2){
+	background-color: #E3E3E3;
+	width: 80px;
+}
+
+.wapperTable td:nth-child(3){
+	background-color: #FFFFFF;
+}
+
+.wapperTable td:nth-child(2) p{
 	font-size: 12px;
 }
 
@@ -101,9 +158,21 @@ td > * {
 
 #div_Dash{
 	text-align: center;
+	border-bottom: 1px solid #E3E3E3;
+	border-right: 1px solid #E3E3E3;
+	border-left: 1px solid #E3E3E3;
+}
+
+#div_Dash .header_p{
+	margin-top: 30px;
+}
+
+#div_Dash table{
+	margin-top: 10px;
 }
 
 #div_User {
+	margin-top: 50px;
 	text-align: center;
 	display: none;
 	min-height: 700px;
@@ -161,7 +230,7 @@ td > * {
 }
 
 #busmap{
-	margin-top: 10px;
+	margin-top: 5px;
 	margin-bottom: 10px;
 	height: 100px;
 	width: 100%;

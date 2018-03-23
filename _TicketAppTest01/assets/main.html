@@ -3,8 +3,10 @@
   <meta charset="utf-8">
   <!-- http://garden.zendesk.com -->
   <link rel="stylesheet" href="https://assets.zendesk.com/apps/sdk-assets/css/1/zendesk_garden.css" type="text/css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!--<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>-->
+  <!--<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./main.css">
   <script src='https://code.jquery.com/jquery.min.js'></script>
@@ -16,68 +18,68 @@
 </head>
 <body>
 
-  <div class="navBar w3-bar w3-Khaki">
-    <span class="img_frame"><img src="./Ebus.png" height="30px"/></span>
+  <div class="navBar w3-bar">
 
-    <button class="w3-bar-item w3-button tablink w3-blue-gray" onclick="openNavi(event, 'div_Dash')"><i class="fa fa-home"></i></button>
-    <button class="w3-bar-item w3-button tablink w3-Khaki" onclick="openNavi(event, 'div_User')"><i class="fa fa-user"></i></button>
-    <button class="w3-bar-item w3-button tablink w3-Khaki" onclick="openNavi(event, 'div_Bus')"><i class="fa fa-list"></i>
-</button>
+    <button class="w3-bar-item w3-button tablink color-lightgray" onclick="openNavi(event, 'div_Dash')"><i class="fa fa-home"></i></button>
+    <button class="w3-bar-item w3-button tablink color-white" onclick="openNavi(event, 'div_User')"><i class="fa fa-user"></i></button>
+    <button class="w3-bar-item w3-button tablink color-white" onclick="openNavi(event, 'div_Bus')"><i class="fa fa-list"></i></button>
+    <span class="w3-bar-item img_frame" style="background: white;"><img src="./Ebus.png" height="32px" width="101px" style="background: white;"/></span>
 
   </div>
 
   <div class=main>
 
-    <div id=div_Dash class="div_navi w3-container city w3-animate-opacity w3-light-gray">
+    <div id=div_Dash class="div_navi w3-container city w3-animate-opacity">
         <div class="divHeader">
-            <h2 class="u-infoDash">고객 정보</h2>
+          <p class="header_p"><i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp;<strong>고객 정보</strong></p>
         </div>
-          <table class="wapperTable">
-            <tr><td><span title="사용자 이름"><p><i class="glyphicon glyphicon-user smallicon"></i></p></span></td><td><p class="userName">-</p></td></tr>
-            <tr><td><span title="회사 소속"><p><i class="fa fa-building-o smallicon" aria-hidden="true"></i></p></span></td><td><p class="affiliation">-</p></td></tr>
-            <tr><td><span title="전화번호"><p><i class="glyphicon glyphicon-phone smallicon"></i></p></span></td><td><p class="userPhone">-</p></td></tr>
+          <table class="table wapperTable">
+            <tr><td></td><td><span title="사용자 이름"><p>사용자 이름</p></span></td><td><p class="userName"></p></td></tr>
+            <tr><td></td><td><span title="회사 소속"><p>회사 소속</p></span></td><td><p class="affiliation"></p></td></tr>
+            <tr><td></td><td><span title="전화번호"><p>전화번호</p></span></td><td><p class="userPhone"></p></td></tr>
           </table>
 
           <div class="divHeader">
-            <h2 class="u-infoDash">최근 예약정보</h2>
+            <p class="header_p"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>&nbsp;<strong>최근 예약정보</strong></p>
           </div>
-          <table class="wapperTable">
-            <tr><td><p>탑승 날짜</p></td><td><p class="boardingDay">-</p></td></tr>
-            <tr><td><p>출발 시각</p></td><td><p class="boardingTime">-</p></td></tr>
-            <tr><td><p>탑승 장소</p></td><td><p class="stopNameOn">-</p></td></tr>
-            <tr><td><p>탑승 여부</p></td><td><p class="boardingYn">-</p></td></tr>
-            <tr><td><p>노선 이름</p></td><td><p class="lineName">-</p></td></tr>
-            <tr><td><p>노선 정의</p></td><td><p class="lineDesc">-</p></td></tr>
-            <tr><td><p>지불 금액</p></td><td><p class="payMoney">-</p></td></tr>
+          <table class="table wapperTable">
+            <tr><td></td><td><p>탑승 날짜</p></td><td><p class="boardingDay"></p></td></tr>
+            <tr><td></td><td><p>출발 시각</p></td><td><p class="boardingTime"></p></td></tr>
+            <tr><td></td><td><p>탑승 장소</p></td><td><p class="stopNameOn"></p></td></tr>
+            <tr><td></td><td><p>탑승 여부</p></td><td><p class="boardingYn"></p></td></tr>
+            <tr><td></td><td><p>노선 이름</p></td><td><p class="lineName"></p></td></tr>
+            <tr><td></td><td><p>노선 정의</p></td><td><p class="lineDesc"></p></td></tr>
+            <tr><td></td><td><p>지불 금액</p></td><td><p class="payMoney"></p></td></tr>
           </table>
 
           <div class="divHeader">
-            <h2 class="u-infoDash">실시간 버스위치</h2>
+            <p class="header_p"><i class="fa fa-bus fa-fw" aria-hidden="true"></i>&nbsp;<strong>실시간 버스위치</strong></p>
           </div>
           <Canvas id="busmap"></Canvas>
-          <table class="wapperTable">
-            <tr><td style="width: 70px;"><p>정류장</p></td><td><p class="StaName">정류장을 선택하십시오</p></td></tr>
-            <tr><td style="width: 70px;"><p>상태</p></td><td><p class="StaIsThru">정류장을 선택하십시오</p></td></tr>
+          <table class="table wapperTable">
+            <tr><td></td><td style="width: 70px;"><p>정류장</p></td><td><p class="StaName">정류장을 선택하십시오</p></td></tr>
+            <tr><td></td><td style="width: 70px;"><p>상태</p></td><td><p class="StaIsThru">정류장을 선택하십시오</p></td></tr>
           </table>
-          <button class="w3-button w3-Khaki" style="margin-bottom : 10px; border-radius: 5px;" onclick="detailBusMap()">상세지도 열기</button>
-
+          <br>
+          <button class="w3-button color-darkgray" style="margin-bottom : 10px; border-radius: 5px;" onclick="detailBusMap()">상세지도 열기</button>
+      <br>
     </div>
 
     <div id=div_User class="div_navi w3-container city w3-animate-opacity w3-light-gray">
-        <div class="divHeader">
-            <h2 class="u-infoUser1">고객 정보 (상세)</h2>
+        <div class="divHeader" style="margin-top: 35px;">
+          <p class="header_p"><i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp;<strong>고객 정보 (상세)</strong></p>
         </div>
-          <table class="wapperTable">
-            <tr><td><span title="사용자 이름"><p><i class="glyphicon glyphicon-user smallicon"></i></p></span></td><td><p class="userName">-</p></td></tr>
-            <tr><td><span title="전화번호"><p><i class="glyphicon glyphicon-phone smallicon"></i></p></span></td><td><p class="userPhone">-</p></td></tr>
-            <tr><td><span title="이메일 주소"><p><i class="fa fa-envelope smallicon" aria-hidden="true"></i></p></span></td><td><p class="userEmail">-</p></td></tr>
+          <table class="table wapperTable">
+            <tr><td></td><td><span title="사용자 이름"><p>사용자 이름</p></span></td><td><p class="userName"></p></td></tr>
+            <tr><td></td><td><span title="전화번호"><p>전화번호</i></p></span></td><td><p class="userPhone"></p></td></tr>
+            <tr><td></td><td><span title="이메일 주소"><p>이메일 주소</p></span></td><td><p class="userEmail"></p></td></tr>
             
           </table>
     </div>
 
     <div id=div_Bus class="div_navi w3-container city w3-animate-opacity w3-light-gray">
-        <div class="divHeader">
-            <h2 class="b-infoBus">탑승 히스토리</h2>
+        <div class="divHeader" style="margin-top: 35px;">
+          <p class="header_p"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;<strong>탑승 히스토리</strong></p>
         </div>
         <div class="listBus"></div>
     </div>
